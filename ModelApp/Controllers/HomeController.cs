@@ -30,11 +30,13 @@ namespace ModelApp.Controllers
                 new Phone { Id=6, Manufacturer= google, Name="Nexus 6P", Price=50000 }
             };
         }
+       
         public IActionResult Index(int? companyId)
         {
             // формируем список компаний для передачи в представление
             List<CompanyModel> companyModels = companies.Select(c => new CompanyModel { Id = c.Id, Name = c.Name }).ToList();
             // добавляем на первое место
+
             companyModels.Insert(0, new CompanyModel { Id = 0, Name = "All" });
 
             IndexViewModel ivm = new IndexViewModel { Companies = companyModels, Phones = phones };
